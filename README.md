@@ -23,8 +23,9 @@ Este projeto tem como objetivo demonstrar a execução de ataques de força brut
 
 ## 1) Enumeração com nmap (portas 21,22,80,139,445)
    
-   # varre as portas específicas com detecção de versão e scripts básicos
-Comando: nmap -sV -sC -p 21,22,80,139,445 192.168.10.3 -oA nmap_metasp_ftp_scan
+  Comando: nmap -sV -sC -p 21,22,80,139,445 192.168.10.3 -oA nmap_metasp_ftp_scan
+   ### varre as portas específicas com detecção de versão e scripts básicos
+
 
 O que fazem os parâmetros:
 
