@@ -29,6 +29,9 @@ Este projeto tem como objetivo demonstrar a execução de ataques de força brut
 
 O que fazem os parâmetros:
 
+nmap
+Programa de varredura de portas e enumeração de rede.
+
 -p 21,22,80,139,445 → varre apenas essas portas.
 
 -sV → tenta descobrir versão do serviço.
