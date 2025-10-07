@@ -37,7 +37,7 @@ O que fazem os parâmetros:
 ### Exemplo de saída:
 
 ──(kali㉿kali)-[~]
-└─$ nmap -sV -sC -p 21,22,80,139,445 192.168.10.3                         
+└─$ nmap -sV -p 21,22,80,139,445 192.168.10.3                         
 Starting Nmap 7.95 ( https://nmap.org ) at 2025-10-07 17:12 EDT
 Nmap scan report for 192.168.10.3
 Host is up (0.0027s latency).
