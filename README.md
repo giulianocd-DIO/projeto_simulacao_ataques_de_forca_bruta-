@@ -103,6 +103,7 @@ EOF
 Instalação (se necessário):
 
 sudo apt update
+
 sudo apt install medusa -y
 
 ### Comando Medusa para FTP, usando listas criadas:
