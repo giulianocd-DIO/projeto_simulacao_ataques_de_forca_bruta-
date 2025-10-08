@@ -407,20 +407,25 @@ Revise esse arquivo, filtre os usuários válidos e, se preferir, crie `users.tx
 ## Passo 2: Atacar SMB com Medusa usando password spraying
 Agora usaremos o Medusa para tentar senhas do arquivo `passwords.txt` para cada usuário listado em `users.txt`.
 
-```bash
+### Comando:
 medusa -h 192.168.10.3 \
-       -H ~/wordlists/users.txt \
+       -U ~/wordlists/users.txt \
        -P ~/wordlists/passwords.txt \
        -M smbnt \
        -t 10
-```
+
 
 **Explicação:**
-- `-h 192.168.10.3`: IP do alvo.
-- `-H ~/wordlists/users.txt`: lista de usuários para tentar (arquivo).
-- `-P ~/wordlists/passwords.txt`: lista de senhas que serão testadas.
-- `-M smbnt`: usa o módulo SMB NTLM para autenticação.
-- `-t 10`: número de threads simultâneas, para acelerar as tentativas.
+-h 192.168.10.3: especifica o host alvo, neste caso o endereço IP da máquina Metasploitable 2 onde o serviço SMB está rodando.
+
+-U ~/wordlists/users.txt: indica o arquivo que contém a lista de usuários que serão testados no ataque. Cada linha do arquivo é um usuário diferente.
+
+-P ~/wordlists/passwords.txt: indica o arquivo que contém a lista de senhas que serão testadas contra cada usuário.
+
+-M smbnt: especifica o módulo de autenticação usado por Medusa, neste caso SMB NTLM (windows sharing) para tentar autenticações SMB com protocolos NT LAN Manager.
+
+-t 10: define o número de threads paralelas usadas no ataque. Mais threads significam ataques mais rápidos, mas podem sobrecarregar a rede ou serviços.
+
 
 O Medusa irá tentar cada senha para cada usuário, evitando travar contas, pois tenta poucas senhas por usuário.
 
@@ -430,6 +435,10 @@ O Medusa irá tentar cada senha para cada usuário, evitando travar contas, pois
 - Medusa exibirá no terminal as credenciais válidas encontradas.
 - Registre esses resultados para análise e relatório.
 
+## Saída:
+![Tela de acesso](images/smb1.png)
+![Tela de acesso](images/smb2.png)
+
 ***
 
 ## Atenção e Ética
@@ -438,8 +447,27 @@ O Medusa irá tentar cada senha para cada usuário, evitando travar contas, pois
 
 ***
 
-Se quiser, posso ajudar a elaborar scripts para automatizar esses passos ou preparar relatórios estruturados.
+## Passo 4: Testar ataque
 
+### Comando:
+ smbclient -L //192.168.10.3 -U msfadmin
+
+**Explicação:**
+smbclient: é uma ferramenta cliente em linha de comando para acessar compartilhamentos SMB/CIFS (usado para compartilhamento de arquivos em redes Windows e Samba).
+
+-L: opção para listar todos os compartilhamentos disponíveis no servidor SMB especificado.
+
+//192.168.10.3: endereço IP do servidor alvo (no caso, a VM Metasploitable 2) precedido de duas barras, formato padrão usado para acessar recursos SMB.
+
+-U msfadmin: nome do usuário que será usado para autenticação no servidor SMB (neste exemplo, usuário msfadmin).
+
+**O que faz:**
+Este comando lista os compartilhamentos disponíveis no servidor SMB localizado no IP 192.168.10.3, usando o usuário msfadmin para autenticação. Ao executar, o smbclient pedirá a senha desse usuário. Se a autenticação for bem sucedida, ele mostrará uma lista dos compartilhamentos e serviços SMB acessíveis a esse usuário.
+
+## Saída:
+![Tela de acesso](images/smbclient.png)
+
+***
 
 
 
