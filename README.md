@@ -1,5 +1,7 @@
 # Projeto de Simulação de Ataques de Força Bruta com Kali Linux e Medusa
 
+<img width="725" height="258" alt="Image" src="https://github.com/user-attachments/assets/ba4ee48c-0dc5-4cb5-9228-d3ac62e5f060" />
+
 ## Descrição do Projeto
 Este projeto tem como objetivo demonstrar a execução de ataques de força bruta utilizando Kali Linux e a ferramenta Medusa contra serviços vulneráveis do Metasploitable 2 e aplicação DVWA (Damn Vulnerable Web Application). O projeto também aborda a configuração do ambiente para testes de segurança, tipos de ataques cibernéticos, vulnerabilidades exploradas e medidas de mitigação para proteger sistemas.
 
