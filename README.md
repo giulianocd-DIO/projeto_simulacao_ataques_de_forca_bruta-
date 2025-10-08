@@ -385,7 +385,8 @@ Vai iniciar as tentativas de login brute force no formulário do DVWA, testando 
 
 Quando liberar acesso, Medusa imprime mensagem de sucesso.
 
-<img width="500" height="289" alt="Image" src="https://github.com/user-attachments/assets/cb18faad-4d4d-4dce-8186-486914e6d33d" />
+
+<img width="1487" height="869" alt="acesso_form" src="https://github.com/user-attachments/assets/7a61e6f0-208e-4ce4-a19f-0adb4dd73f2e" />
 
 
 
