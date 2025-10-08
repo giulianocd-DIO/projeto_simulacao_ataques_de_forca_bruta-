@@ -162,7 +162,7 @@ O que significam as flags:
 
 ### Exemplo de saída esperada quando encontra credenciais:
 
-![Tela de acesso](images/sucesso user pass.png)
+![Tela de acesso](images/sucesso_user_pass.png)
 
 ## 4) Teste de conexão FTP com as credenciais encontradas
 
@@ -177,7 +177,7 @@ Password: msfadmin
 
 ### Exemplo de Saída esperada:
 
-![Tela de acesso](images/ftp sucesso.png)
+![Tela de acesso](images/ftp_sucesso.png)
 
 ***
 ***
