@@ -221,7 +221,7 @@ Connected to 192.168.10.3.
 Name (192.168.10.3:kali): msfadmin
 331 Please specify the password.
 Password: 
-230 Login successful.
+#### 230 Login successful.
 Remote system type is UNIX.
 Using binary mode to transfer files.
 ftp> 
