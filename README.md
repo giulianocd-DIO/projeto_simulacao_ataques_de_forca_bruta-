@@ -78,9 +78,7 @@ Este projeto tem como objetivo demonstrar a execução de ataques de força brut
 
 # Prática:
 
-## Ataques Executados
-
-# Ataque de Força Bruta FTP com Medusa
+# Simulação Ética de Ataque de Força Bruta FTP com Medusa
 
 ## 1) Enumeração com nmap (portas 21,22,80,139,445)
    
