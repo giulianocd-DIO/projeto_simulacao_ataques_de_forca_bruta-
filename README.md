@@ -340,9 +340,6 @@ Quando liberar acesso, Medusa imprime mensagem de sucesso.
 ![Tela de acesso](images/acesso_form.png)
 
 ***
-O ataque de **password spraying em SMB (Server Message Block)** com enumeração de usuários é uma técnica usada por invasores para obter acesso não autorizado ao ambiente de rede. Abaixo estão detalhes sobre suas características, como detectar e medidas de mitigação.
-
-***
 
 # Ataque de Password Spraying em SMB com Enumeração de Usuários
 
