@@ -17,6 +17,67 @@ Este projeto tem como objetivo demonstrar a execução de ataques de força brut
 - Rede configurada como Host-Only para comunicação interna entre as VMs.
 - DVWA instalado na Metasploitable 2 para testes em aplicações web.
 
+  # Ataques de Dicionário e Força Bruta: Diferenças, Detecção e Mitigação
+
+Vamos explorar os dois tipos comuns de ataques para quebrar senhas: **ataque de dicionário** e **ataque de força bruta**. Embora ambos tentem descobrir senhas testando várias combinações, têm diferenças essenciais.
+
+***
+# Entendendo 2 tipos de ataques: Dicionário e Força Bruta
+
+## Ataque de Dicionário
+- Usa uma **lista predefinida** de palavras, a "lista do dicionário", com senhas comuns como nomes, datas especiais, palavras populares e variações.
+- É eficaz porque muitas pessoas usam senhas previsíveis, e a lista diminui o número de tentativas precisas.
+
+**Como funciona:**
+1. O atacante escolhe um alvo.
+2. Automatiza tentativas com palavras do dicionário.
+3. Quando encontra a senha, acessa o sistema.
+
+### Detecção
+- Muitos acessos falhos vindos de um mesmo IP, tentando senhas conhecidas.
+- Padrões repetitivos de senhas em relatórios de falhas.
+
+### Mitigação
+- Proibir senhas presentes em listas de senhas comuns.
+- Usar autenticação multifator para evitar acesso mesmo se a senha for descoberta.
+- Monitorar e bloquear automaticamente tentativas repetidas da mesma fonte.
+
+***
+
+## Ataque de Força Bruta
+- Testa **todas as combinações possíveis** de caracteres (letras, números, símbolos) sem usar listas.
+- Muito mais lento e custoso, pois o espaço de combinações cresce exponencialmente com o tamanho da senha.
+
+**Como funciona:**
+1. O invasor inicia tentativas começando de senhas curtas e simples, evoluindo para combinações mais complexas.
+2. Usa scripts, GPUs e até redes distribuídas para tentar milhares ou milhões de senhas em paralelo.
+
+### Detecção
+- Alto volume de tentativas aleatórias e sem padrão definido.
+- Tentativas de senhas de tamanho crescente e variações extensas.
+
+### Mitigação
+- Limitar tentativas simultâneas e implementar bloqueio progressivo (delay ou bloqueio após várias tentativas).
+- Exigir senhas longas e complexas para aumentar o tempo necessário para um ataque bem-sucedido.
+- Ativar autenticação multifator.
+
+***
+
+## Diferenças principais
+- **Dicionário:** usa lista de palavras conhecidas, mais rápido e eficiente contra senhas comuns.
+- **Força bruta:** tenta tudo possível, bom para senhas fortes, mas muito mais lento.
+
+## Resumo
+| Aspecto           | Ataque de Dicionário                 | Ataque de Força Bruta                 |
+|-------------------|------------------------------------|-------------------------------------|
+| Método            | Tenta senhas de uma lista prévia   | Tenta todas as combinações possíveis|
+| Velocidade        | Mais rápido                        | Mais lento                          |
+| Efetividade       | Bom contra senhas fracas e comuns | Pode quebrar senhas únicas, mas leva muito tempo|
+| Detecção          | Padrão de senhas repetidas          | Volume alto e combinações aleatórias|
+
+
+# Prática:
+
 ## Ataques Executados
 
 # Ataque de Força Bruta FTP com Medusa
