@@ -191,7 +191,7 @@ O que significam as flags:
 Medusa v2.3 [http://www.foofus.net] (C) JoMo-Kun / Foofus Networks <jmk@foofus.net>
 
 2025-10-07 17:50:37 ACCOUNT CHECK: [ftp] Host: 192.168.10.3 (1 of 1, 0 complete) User: msfadmin (1 of 10, 0 complete) Password: msfadmin (1 of 10 complete)
-### 2025-10-07 17:50:37 ACCOUNT FOUND: [ftp] Host: 192.168.10.3 User: msfadmin Password: msfadmin [SUCCESS]
+#### 2025-10-07 17:50:37 ACCOUNT FOUND: [ftp] Host: 192.168.10.3 User: msfadmin Password: msfadmin [SUCCESS]
 2025-10-07 17:50:38 ACCOUNT CHECK: [ftp] Host: 192.168.10.3 (1 of 1, 0 complete) User: msfadmin (1 of 10, 1 complete) Password: admin (2 of 10 complete)
 2025-10-07 17:50:38 ACCOUNT CHECK: [ftp] Host: 192.168.10.3 (1 of 1, 0 complete) User: msfadmin (1 of 10, 1 complete) Password: password (3 of 10 complete)
 2025-10-07 17:50:38 ACCOUNT CHECK: [ftp] Host: 192.168.10.3 (1 of 1, 0 complete) User: msfadmin (1 of 10, 1 complete) Password: msf (4 of 10 complete)
