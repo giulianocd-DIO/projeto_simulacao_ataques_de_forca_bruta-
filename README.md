@@ -17,9 +17,7 @@ Este projeto tem como objetivo demonstrar a execução de ataques de força brut
 - Rede configurada como Host-Only para comunicação interna entre as VMs.
 - DVWA instalado na Metasploitable 2 para testes em aplicações web.
 
-  # Ataques de Dicionário e Força Bruta: Diferenças, Detecção e Mitigação
 
-Vamos explorar os dois tipos comuns de ataques para quebrar senhas: **ataque de dicionário** e **ataque de força bruta**. Embora ambos tentem descobrir senhas testando várias combinações, têm diferenças essenciais.
 
 ***
 # Entendendo 2 tipos de ataques: Dicionário e Força Bruta
