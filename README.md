@@ -416,6 +416,7 @@ medusa -h 192.168.10.3 \
 
 
 **Explicação:**
+
 -h 192.168.10.3: especifica o host alvo, neste caso o endereço IP da máquina Metasploitable 2 onde o serviço SMB está rodando.
 
 -U ~/wordlists/users.txt: indica o arquivo que contém a lista de usuários que serão testados no ataque. Cada linha do arquivo é um usuário diferente.
