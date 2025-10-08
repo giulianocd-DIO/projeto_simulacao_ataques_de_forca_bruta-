@@ -339,6 +339,42 @@ Quando liberar acesso, Medusa imprime mensagem de sucesso.
 
 ![Tela de acesso](images/acesso_form.png)
 
+***
+O ataque de **password spraying em SMB (Server Message Block)** com enumeração de usuários é uma técnica usada por invasores para obter acesso não autorizado ao ambiente de rede. Abaixo estão detalhes sobre suas características, como detectar e medidas de mitigação.
+
+***
+
+# Ataque de Password Spraying em SMB com Enumeração de Usuários
+
+### Características do Ataque
+
+- **Password spraying** consiste em tentar poucas senhas comuns, simples ou padrões, contra muitos usuários diferentes, em vez de tentar várias senhas em um único usuário.
+- Isso evita bloqueios de conta causados por muitas tentativas incorretas em um único usuário, pois cada usuário é testado com poucas senhas.
+- O alvo é o protocolo SMB, utilizado para compartilhamento de arquivos e recursos em redes Microsoft Windows.
+- Antes de tentar senhas, o atacante geralmente faz **enumeração de usuários**, coletando nomes de contas válidas no domínio usando ferramentas como `enum4linux`.
+- O ataque é realizado em larga escala e "low-and-slow", espalhando tentativas para evitar detecção.
+- Finalidade: obter acesso inicial para movimento lateral, escalonamento de privilégios e acesso a dados sensíveis.
+
+### Como Detectar
+- Monitoramento de logs de autenticação, observando tentativas de login com muitas contas diferentes que falham repetidamente.
+- Detectar múltiplos autenticações falhas originadas do mesmo IP host em diferentes contas.
+- Eventos do Windows relevantes: 
+  - **Event ID 4625:** Falhas de login no Windows, especialmente em serviços SMB.
+- Ferramentas de SIEM podem filtrar padrões anômalos de tentativas de acesso SMB.
+- Análises comportamentais e correlacionamento de eventos com inteligência de ameaças podem ajudar.
+  
+### Medidas de Mitigação
+- Implementar políticas de bloqueio de conta após um número razoável de tentativas falhas, balanceando para não causar negação de serviço.
+- Usar **autenticação multifator (MFA)** para impedir que senhas vazadas por si só concedam acesso.
+- Aplicar políticas de senha seguras e exigir complexidade e troca periódica.
+- Monitorar e alertar para atividades suspeitas em autenticações SMB.
+- Restringir acesso SMB apenas para hosts e aplicações necessárias.
+- Manter sistemas e serviços atualizados para corrigir vulnerabilidades no protocolo SMB.
+- Usar soluções de detecção de intrusão e ferramentas de gerenciamento de identidade para detectar comportamento anômalo.
+
+***
+
+
 
 
 
