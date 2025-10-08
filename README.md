@@ -119,7 +119,7 @@ PORT    STATE SERVICE     VERSION
 |_End of status
 |_ftp-anon: Anonymous FTP login allowed (FTP code 230)
 
-
+![Tela de acesso](images/portas.png)
 
  ## 2) Lista de contas / senhas para teste (wordlists simples)
 
@@ -199,6 +199,7 @@ Medusa v2.3 [http://www.foofus.net] (C) JoMo-Kun / Foofus Networks <jmk@foofus.n
                                                                                                                                                                                             
 ┌──(kali㉿kali)-[~/wordlists]
 └─$ 
+![Tela de acesso](images/sucesso user pass.png)
 
 ## 4) Teste de conexão FTP com as credenciais encontradas
 
@@ -224,7 +225,9 @@ Password:
 Remote system type is UNIX.
 Using binary mode to transfer files.
 ftp> 
- 
+
+![Tela de acesso](images/ftp sucesso.png)
+
 ***
 ***
 
