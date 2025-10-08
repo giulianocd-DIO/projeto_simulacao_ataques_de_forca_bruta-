@@ -386,7 +386,8 @@ Vai iniciar as tentativas de login brute force no formulário do DVWA, testando 
 Quando liberar acesso, Medusa imprime mensagem de sucesso.
 
 
-![Tela de acesso](images/acesso_form.png)
+![Tela de acesso](https://github.com/giulianocd-DIO/projeto_simulacao_ataques_de_forca_bruta-/blob/main/images/acesso_form.png?raw=true)
+
 
 
 
