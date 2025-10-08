@@ -380,6 +380,7 @@ medusa -h 192.168.10.3 \
        -m FORM:'/dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:F=Login failed' \
        -t 10
 ```
+<img width="725" height="258" alt="form" src="https://github.com/user-attachments/assets/04f77853-70d4-48f2-a9cd-5cd90c9e0bff" />
 
 Vai iniciar as tentativas de login brute force no formulário do DVWA, testando todos os usuários e senhas de suas wordlists.
 
