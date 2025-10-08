@@ -1,6 +1,5 @@
 # Projeto de Simulação de Ataques de Força Bruta com Kali Linux e Medusa
 
-<img width="725" height="258" alt="Image" src="https://github.com/user-attachments/assets/ba4ee48c-0dc5-4cb5-9228-d3ac62e5f060" />
 
 ## Descrição do Projeto
 Este projeto tem como objetivo demonstrar a execução de ataques de força bruta utilizando Kali Linux e a ferramenta Medusa contra serviços vulneráveis do Metasploitable 2 e aplicação DVWA (Damn Vulnerable Web Application). O projeto também aborda a configuração do ambiente para testes de segurança, tipos de ataques cibernéticos, vulnerabilidades exploradas e medidas de mitigação para proteger sistemas.
@@ -373,6 +372,7 @@ medusa -h 192.168.10.3 \
 ## Exemplo prático completo
 
 Executar no Kali Linux:
+<img width="725" height="258" alt="Image" src="https://github.com/user-attachments/assets/ba4ee48c-0dc5-4cb5-9228-d3ac62e5f060" />
 
 
 medusa -h 192.168.10.3 \
@@ -382,14 +382,13 @@ medusa -h 192.168.10.3 \
        -m FORM:'/dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:F=Login failed' \
        -t 10
 ```
-<img width="725" height="258" alt="form" src="https://github.com/user-attachments/assets/04f77853-70d4-48f2-a9cd-5cd90c9e0bff" />
 
 Vai iniciar as tentativas de login brute force no formulário do DVWA, testando todos os usuários e senhas de suas wordlists.
 
 Quando liberar acesso, Medusa imprime mensagem de sucesso.
 
 
-![Tela de acesso](https://github.com/giulianocd-DIO/projeto_simulacao_ataques_de_forca_bruta-/blob/main/images/acesso_form.png?raw=true)
+
 
 
 
