@@ -384,8 +384,7 @@ medusa -h 192.168.10.3 \
 Vai iniciar as tentativas de login brute force no formulário do DVWA, testando todos os usuários e senhas de suas wordlists.
 
 Quando liberar acesso, Medusa imprime mensagem de sucesso.
-
-<img width="495" height="289" alt="Image" src="https://github.com/user-attachments/assets/cb18faad-4d4d-4dce-8186-486914e6d33d" />
+https://github.com/giulianocd-DIO/projeto_simulacao_ataques_de_forca_bruta-/issues/2#issue-3495940440
 ***
 
 
