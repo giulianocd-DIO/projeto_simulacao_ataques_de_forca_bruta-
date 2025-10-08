@@ -371,9 +371,74 @@ Quando liberar acesso, Medusa imprime mensagem de sucesso.
 
 ***
 
+# Prática:
 
+# Simulação Ética de Ataque de Password Spraying em SMB
 
+## Cenário
+- Kali Linux atacante: 192.168.10.4
+- Metasploitable 2 alvo: 192.168.10.3
+- Wordlists:
+  - Usuários: `~/wordlists/users.txt`
+  - Senhas: `~/wordlists/passwords.txt`
 
+## Objetivo
+Realizar uma simulação ética de ataque de password spraying em SMB, que consiste em:
+- Enumerar usuários SMB válidos no alvo;
+- Tentar senhas comuns para múltiplos usuários para testar segurança, respeitando ambiente controlado.
+
+***
+
+## Passo 1: Enumeração de usuários SMB
+Use a ferramenta `enum4linux` para listar usuários SMB da máquina 192.168.10.3:
+
+```bash
+enum4linux -U 192.168.10.3 > smb_users_enum.txt
+```
+
+**Explicação:**
+- `-U` lista os usuários SMB.
+- O resultado é salvo em `smb_users_enum.txt` para análise posterior.
+
+Revise esse arquivo, filtre os usuários válidos e, se preferir, crie `users.txt` apenas com nomes válidos.
+
+***
+
+## Passo 2: Atacar SMB com Medusa usando password spraying
+Agora usaremos o Medusa para tentar senhas do arquivo `passwords.txt` para cada usuário listado em `users.txt`.
+
+```bash
+medusa -h 192.168.10.3 \
+       -H ~/wordlists/users.txt \
+       -P ~/wordlists/passwords.txt \
+       -M smbnt \
+       -t 10
+```
+
+**Explicação:**
+- `-h 192.168.10.3`: IP do alvo.
+- `-H ~/wordlists/users.txt`: lista de usuários para tentar (arquivo).
+- `-P ~/wordlists/passwords.txt`: lista de senhas que serão testadas.
+- `-M smbnt`: usa o módulo SMB NTLM para autenticação.
+- `-t 10`: número de threads simultâneas, para acelerar as tentativas.
+
+O Medusa irá tentar cada senha para cada usuário, evitando travar contas, pois tenta poucas senhas por usuário.
+
+***
+
+## Passo 3: Análise dos resultados
+- Medusa exibirá no terminal as credenciais válidas encontradas.
+- Registre esses resultados para análise e relatório.
+
+***
+
+## Atenção e Ética
+- Execute estas ações apenas em ambiente controlado e autorizado.
+- Nunca realize ataques sem permissão explícita.
+
+***
+
+Se quiser, posso ajudar a elaborar scripts para automatizar esses passos ou preparar relatórios estruturados.
 
 
 
