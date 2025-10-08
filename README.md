@@ -226,4 +226,90 @@ Remote system type is UNIX.
 Using binary mode to transfer files.
 ftp> 
  
+***
+***
+
+
+---
+# Ataque de automação de tentativas em formulário web
+
+## O que é
+
+O **ataque de automação de tentativas** ocorre quando um invasor usa **scripts ou ferramentas automáticas** para enviar múltiplas requisições a um **formulário web** (como login, cadastro ou recuperação de senha).
+No **DVWA**, esse tipo de teste serve para demonstrar vulnerabilidades de **força bruta** e **enumeração de usuários**.
+
+**Objetivos comuns:**
+
+* Tentar várias senhas automaticamente (força bruta / dicionário)
+* Descobrir usuários válidos
+* Inundar o sistema com requisições (negação de serviço leve)
+
+---
+
+##  Como detectar
+
+Procure padrões anormais em logs de aplicação, firewall ou WAF:
+
+* Muitas requisições `POST` para `/login` em poucos segundos
+* Mesmo IP ou user-agent fazendo dezenas de tentativas
+* Respostas 401 / 403 / 429 repetidas
+* Erros de autenticação em série
+* Intervalos curtos e regulares entre tentativas (robô)
+* Falhas de CAPTCHA ou ausência de token CSRF
+
+ **Exemplo de alerta (SIEM):**
+
+> “Mais de 30 requisições POST /login do mesmo IP em 1 minuto”
+
+---
+
+##  Como mitigar (defesa em camadas)
+
+### 1. Rate Limiting
+
+Limite o número de requisições por IP/usuário em curto tempo.
+Exemplo Nginx:
+
+```nginx
+limit_req_zone $binary_remote_addr zone=login:10m rate=10r/m;
+```
+
+### 2. CAPTCHA ou desafio adaptativo
+
+Peça verificação humana (CAPTCHA) após várias tentativas falhas.
+
+### 3. Bloqueio e atraso progressivo
+
+* Bloquear IP por tempo curto após X falhas
+* Inserir atraso (2s, 5s, 10s) entre tentativas
+
+### 4. CSRF Token e Honeypot
+
+* Exigir **token CSRF** válido no formulário
+* Adicionar **campo oculto** que bots tendem a preencher (honeypot)
+
+### 5. WAF e monitoramento
+
+* Ativar regras de detecção de automação (OWASP CRS, ModSecurity)
+* Monitorar logs e criar alertas automáticos em SIEM (Ex: Splunk, ELK)
+
+### 6. Boas práticas de autenticação
+
+* Mensagens de erro genéricas (“Usuário ou senha incorretos”)
+* Exigir MFA (autenticação de dois fatores)
+* Bloquear senhas fracas e senhas vazadas
+
+---
+
+##  Resumo rápido
+
+| Fase                     | Ação do atacante                       | Como detectar               | Como mitigar                                 |
+| ------------------------ | -------------------------------------- | --------------------------- | -------------------------------------------- |
+| Automação de requisições | Muitos POSTs no mesmo formulário       | Picos em logs, IP repetido  | Rate limit, CAPTCHA, bloqueio temporário     |
+| Enumeração de usuários   | Mensagens diferentes para login errado | Respostas variadas no login | Mensagens genéricas, atrasos                 |
+| Força bruta              | Tentativas rápidas e seguidas          | Erros 401 em série          | Atraso progressivo, MFA, bloqueio adaptativo |
+
+---
+
+
 
