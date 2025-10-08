@@ -310,6 +310,82 @@ Peça verificação humana (CAPTCHA) após várias tentativas falhas.
 | Força bruta              | Tentativas rápidas e seguidas          | Erros 401 em série          | Atraso progressivo, MFA, bloqueio adaptativo |
 
 ---
+***
+# Prática:
+
+# Simulação Ética de Ataque de Força Bruta em DVWA usando Medusa no Kali Linux
+
+## Cenário
+- Kali Linux (atacante) IP: 192.168.10.4
+- Metasploitable 2 com DVWA (vítima) IP: 192.168.10.3
+- Wordlists em:
+  - Usuários: `~/wordlists/users.txt`
+  - Senhas: `~/wordlists/passwords.txt`
+
+## Objetivo
+Realizar um ataque de força bruta ético no formulário de login do DVWA usando o Medusa para testar credenciais em múltiplos usuários e senhas, simulando um pentest em ambiente controlado.
+
+***
+
+## Passos para executar o ataque
+
+### 1. Conhecer o formulário de login do DVWA
+- O DVWA roda em: http://192.168.10.3/dvwa/login.php
+- Formulário com campos usuais: `username` e `password`
+- Mensagem exibida em login inválido, por exemplo: "Login failed" — esta mensagem será usada para controle de sucesso/falha em Medusa
+
+
+### 2. Sintaxe base do Medusa para ataque HTTP formulário
+
+```bash
+medusa -h 192.168.10.3 \
+       -U ~/wordlists/users.txt \
+       -P ~/wordlists/passwords.txt \
+       -M http \
+       -m FORM:'/dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:F=Login failed' \
+       -t 10
+```
+
+### Explicando cada parte do comando:
+- `-h 192.168.10.3` : IP do alvo (VM Metasploitable 2/DVWA)
+- `-U ~/wordlists/users.txt` : arquivo com lista de usuários
+- `-P ~/wordlists/passwords.txt` : arquivo com lista de senhas
+- `-M http` : módulo de serviço HTTP (web)
+- `-m FORM:'/dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:F=Login failed'` : especifica a forma do formulário
+  - `/dvwa/login.php` : página alvo do POST
+  - `username=^USER^&password=^PASS^&Login=Login` : pares campo=valor, onde `^USER^` e `^PASS^` serão substituídos pelas tentativas
+  - `F=Login failed` : string na resposta HTTP que indica falha de login (Medusa sabe quando parar essa tentativa)
+- `-t 10` : número de threads paralelas para acelerar o ataque
+
+### 3. Como interpretar resultados
+- Medusa irá indicar no terminal quando encontrar combinações válidas usuário/senha
+- Anote esses dados para relatório e testes de acesso
+
+### 4. Recomendações éticas e de segurança
+- Esse teste deve ser feito somente em ambiente controlado com permissão explícita
+- Nunca rode esse tipo de ataque contra sistemas reais sem autorização
+- Use para aprendizado, fortalecimento e validação de segurança
+
+***
+
+## Exemplo prático completo
+
+Executar no Kali Linux:
+
+
+medusa -h 192.168.10.3 \
+       -U ~/wordlists/users.txt \
+       -P ~/wordlists/passwords.txt \
+       -M http \
+       -m FORM:'/dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:F=Login failed' \
+       -t 10
+```
+
+Vai iniciar as tentativas de login brute force no formulário do DVWA, testando todos os usuários e senhas de suas wordlists.
+
+Quando liberar acesso, Medusa imprime mensagem de sucesso.
+
+***
 
 
 
