@@ -212,7 +212,7 @@ Comando: ftp 192.168.10.3
 Name (192.168.10.3:youruser): msfadmin
 Password: msfadmin
 
-Saída esperada:
+### Exemplo de Saída esperada:
 
 ┌──(kali㉿kali)-[~/wordlists]
 └─$ ftp 192.168.10.3
