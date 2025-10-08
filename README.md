@@ -73,6 +73,7 @@ Este projeto tem como objetivo demonstrar a execução de ataques de força brut
 | Efetividade       | Bom contra senhas fracas e comuns | Pode quebrar senhas únicas, mas leva muito tempo|
 | Detecção          | Padrão de senhas repetidas          | Volume alto e combinações aleatórias|
 
+***
 
 # Prática:
 
